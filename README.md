@@ -11,6 +11,6 @@ Es una ayuda para la investigación que brinda un entorno notebook en el navegad
 
 
 # Contenido
-- [Varibles Dummy](https://github.com/NicolasGP01/Asesoria_ECO_I/tree/main/Dummy%20Variables%20)
+- [Structural change](https://github.com/NicolasGP01/Asesoria_ECO_I/tree/main/Dummy%20Variables%20)
 
 
