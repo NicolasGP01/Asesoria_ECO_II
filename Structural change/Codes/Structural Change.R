@@ -18,8 +18,7 @@ rm(list=ls())
 list=ls()
 
 
-install.packages()
-
+# Si los paquetes no están descargados primero descargarlos con install.packages("Nombre del paquete")
 library(tidyverse)
 library(strucchange)
 library(timeSeries)
@@ -55,44 +54,3 @@ plot(CE)
 plot(D_SERIE)
 
 lines(CE , breaks = 3 , col = "blue" )
-
-
-
-EMICRON = EMICRON |> mutate( N_EMPLEADOS = P3091 - 1 ) |> mutate(
- DUMMY = case_when(
-    N_EMPLEADOS == 0 ~ 0 , 
-    N_EMPLEADOS %in% seq(1,16,1) ~ 1 ))
-
-c(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16)
-                           
-EMICRON$DUMMY |> table()     
-                         
-
-EMICRON = EMICRON |> mutate(DUMMY_2 = DUMMY * P35)
-
-EMICRON$DUMMY_2 |> table( useNA =  )
-
-
-Copy_of_RP2017_1_ = read_excel("C:/Users/nicol.NICOLAS_GP/OneDrive/Escritorio/Portafolio/My Work/Armenia/My First Jobs_2022_1/Observatorio Fiscal/Copy of RP2017(1).xlsx", 
-                               sheet = "RP2017")
-
-
-copy_of_RP2017_1_ = Copy_of_RP2017_1_ |> 
-  mutate(newCol = ifelse(str_detect( Observación , "CONTRATO"), 1 , 0))
-
-table(Copy_of_RP2017_1_$newCol)
-
-
-Copy_of_RP2017_1_ = Copy_of_RP2017_1_ |> 
-  mutate(newCol_PROF = ifelse(str_detect( Observación , "CONTRATO DE PRESTACION DE SERVICIOS PROFESIONALES"), 0 , 1))
-
-table(Copy_of_RP2017_1_$newCol_PROF) 
-
-
-Copy_of_RP2017_1_ = Copy_of_RP2017_1_ |> 
-  mutate(newCol_DEF = newCol * newCol_PROF  )
-
-
-table(Copy_of_RP2017_1_$newCol_DEF) 
-
-
