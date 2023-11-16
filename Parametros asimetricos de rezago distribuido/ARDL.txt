@@ -1,0 +1,28 @@
+###############################################################################
+#######                                                                 #######
+#                       UNIVERSIDAD DEL QUINDÍO                               #
+#               PROGRAMA DE ECONOMÍA | ECONOMETRÍA II                         #
+#######                                                                 #######
+###############################################################################
+
+#By: Nicolás García Peñaloza
+#+57 3122852823
+#nicolasgp0109@gmail.com
+
+
+## Si no está instalado
+#install.packages("nardl")
+
+library(nardl)
+
+data = read.csv("https://raw.githubusercontent.com/NicolasGP01/Asesoria_ECO_II/main/Parametros%20asimetricos%20de%20rezago%20distribuido/Data/DATOSMACROEUROPA70-18.csv")
+
+head(data)
+
+E = data |> dplyr::select(YER, UNN)
+
+LE = log(E)
+
+MODASI = nardl( UNN ~ YER , data= BASE , ic = c("aic"),  maxlag = 3 , graph = TRUE , case = 3)
+
+summary(MOD.ASI)
